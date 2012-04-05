@@ -7,7 +7,7 @@ namespace ConsoleApplication01
     {
         static void Main(string[] args)
         {
-            Cachorro cachorro = new Cachorro("Sem Nome");
+            Cachorro cachorro = null;
 
             bool fimPrograma = false;
             while (!fimPrograma)
@@ -22,10 +22,17 @@ namespace ConsoleApplication01
                 }
                 catch (ArgumentException argumentException)
                 {
-                    Console.WriteLine("ERRO: " + argumentException.Message);
+                    Console.WriteLine("\r\nERRO DISPARADO PELO CACHORRO: \r\n" + argumentException.Message + "\r\n");
                 }
 
-                Console.WriteLine("O nome do cachorro é " + cachorro.GetNome());
+                if (cachorro != null)
+                {
+                    Console.WriteLine("O nome do cachorro é " + cachorro.GetNome());
+                }
+                else
+                {
+                    Console.WriteLine("O cachorro não existe");
+                }
             }
         }
     }
