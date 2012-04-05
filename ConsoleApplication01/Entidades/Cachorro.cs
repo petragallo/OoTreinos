@@ -1,7 +1,21 @@
+using System;
+
 namespace ConsoleApplication01.Entidades
 {
     public class Cachorro
     {
+        public Cachorro(string nome)
+        {
+            if (nome.Length != 0)
+            {
+                this.SetNome(nome);
+            }
+            else
+            {
+                throw new ArgumentException("o nome é obrigatório", "nome");
+            }
+        }
+
         // field
         private string _nome;
         // get
