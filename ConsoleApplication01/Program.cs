@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConsoleApplication01.Entidades;
 
 namespace ConsoleApplication01
@@ -8,6 +9,7 @@ namespace ConsoleApplication01
         static void Main(string[] args)
         {
             Cachorro cachorro = null;
+            List<Cachorro> cachorrosLista = new List<Cachorro>();
 
             bool fimPrograma = false;
             while (!fimPrograma)
@@ -19,6 +21,7 @@ namespace ConsoleApplication01
                 try
                 {
                     cachorro = new Cachorro(nome);
+                    cachorrosLista.Add(cachorro);
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -27,7 +30,10 @@ namespace ConsoleApplication01
 
                 if (cachorro != null)
                 {
-                    Console.WriteLine("O nome do cachorro é " + cachorro.GetNome());
+                    foreach (var cachorroItem in cachorrosLista)
+                    {
+                        Console.WriteLine(" - " + cachorro.GetNome());
+                    }
                 }
                 else
                 {
