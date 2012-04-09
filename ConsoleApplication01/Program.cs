@@ -8,37 +8,77 @@ namespace ConsoleApplication01
     {
         static void Main(string[] args)
         {
-            Cachorro cachorro = null;
+            // declaração da única lista utilizada
             List<Cachorro> cachorrosLista = new List<Cachorro>();
 
-            bool fimPrograma = false;
-            while (!fimPrograma)
+            while (true)
             {
-                Console.WriteLine("\r\nCriar cachorro.");
-                Console.Write("Nome: ");
-                string nome = Console.ReadLine();
+                Console.WriteLine("\r\nDigite o comando. (digite ajuda para mais informações)");
+                Console.Write("> ");
 
-                try
-                {
-                    cachorro = new Cachorro(nome);
-                    cachorrosLista.Add(cachorro);
-                }
-                catch (ArgumentException argumentException)
-                {
-                    Console.WriteLine("\r\nERRO DISPARADO PELO CACHORRO: \r\n" + argumentException.Message + "\r\n");
-                }
+                // recebe iput do usuário
+                string comando = Console.ReadLine();
 
-                if (cachorro != null)
+                if (comando == "exit")
                 {
-                    foreach (var cachorroItem in cachorrosLista)
+                    return;
+                }
+                else if (comando == "limpar")
+                {
+                    cachorrosLista.Clear();
+                    ImprimirLista(cachorrosLista);
+                }
+                else if (comando == "incluir")
+                {
                     {
-                        Console.WriteLine(" - " + cachorro.GetNome());
+                        Console.Write("\r\nNome do cachorro: ");
+                        string nome = Console.ReadLine();
+                        IncluirCachorro(nome, cachorrosLista);
+                        ImprimirLista(cachorrosLista);
                     }
                 }
-                else
+                else if (comando == "ajuda")
                 {
-                    Console.WriteLine("O cachorro não existe");
+                    Console.WriteLine("\r\n Comandos disponíveis:");
+                    Console.WriteLine(" - ajuda");
+                    Console.WriteLine(" - incluir");
+                    Console.WriteLine(" - limpar");
+                    Console.WriteLine(" - exit");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Imprime a lista de cachorros.
+        /// </summary>
+        /// <param name="cachorrosLista">lista atual de cachorros</param>
+        private static void ImprimirLista(List<Cachorro> cachorrosLista)
+        {
+            if (cachorrosLista.Count == 0)
+            {
+                Console.WriteLine("Não existem cachorros na lista");
+            }
+
+            foreach (var cachorroItem in cachorrosLista)
+            {
+                Console.WriteLine(" - " + cachorroItem.GetNome());
+            }
+        }
+
+        private static void IncluirCachorro(string nomeCachorro, List<Cachorro> cachorrosLista)
+        {
+            try
+            {
+                // novo cachorro
+                var cachorro = new Cachorro(nomeCachorro);
+
+                // inclui na lista já existente
+                // que recebeu por referencia.
+                cachorrosLista.Add(cachorro);
+            }
+            catch (ArgumentException argumentException)
+            {
+                Console.WriteLine("\r\nERRO DISPARADO PELO CACHORRO: \r\n" + argumentException.Message + "\r\n");
             }
         }
     }
