@@ -30,12 +30,10 @@ namespace ConsoleApplication01
                 }
                 else if (comando == "incluir")
                 {
-                    {
-                        Console.Write("\r\nNome do cachorro: ");
-                        string nome = Console.ReadLine();
-                        IncluirCachorro(nome, cachorrosLista);
-                        ImprimirLista(cachorrosLista);
-                    }
+                    Console.Write("\r\nNome do cachorro: ");
+                    string nome = Console.ReadLine();
+                    IncluirCachorro(nome, cachorrosLista);
+                    ImprimirLista(cachorrosLista);
                 }
                 else if (comando == "ajuda")
                 {
