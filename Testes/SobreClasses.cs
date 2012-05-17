@@ -1,5 +1,4 @@
-﻿using ConsoleApplication01.Entidades;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace KoansCSharpPtBr
 {
@@ -12,6 +11,7 @@ namespace KoansCSharpPtBr
         public void _001_A_classe_inicializa_propriedade_no_construtor()
         {
             Cachorro cachorro = new Cachorro("Godofredo");
+
             Assert.AreEqual(__, cachorro.GetNome(), "Qual é o nome do cachorro?");
         }
     }

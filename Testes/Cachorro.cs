@@ -1,9 +1,11 @@
 using System;
 
-namespace ConsoleApplication01.Entidades
+namespace KoansCSharpPtBr
 {
     public class Cachorro
     {
+        // construtor
+        // sempre é executado no new da classe
         public Cachorro(string nome)
         {
             if (nome.Length != 0)
